@@ -13,11 +13,21 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        /**
+         * flag level user
+         * --> [1] Super Admin
+         * --> [2] Kepala ULP
+         * --> [3] PPK
+         * --> [4] POKJA
+         * --> [5] Sekretariat
+         */
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('level');
             $table->rememberToken();
             $table->timestamps();
         });
