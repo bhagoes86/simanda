@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRevisiTable extends Migration
+class CreatePokjaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRevisiTable extends Migration
      */
     public function up()
     {
-        Schema::create('revisi', function (Blueprint $table) {
+        Schema::create('pokja', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_dokumen');
+            $table->string('nama_pokja');
             $table->text('keterangan')->nullable();
             $table->timestamps();
             $table->softdeletes();
@@ -29,6 +29,6 @@ class CreateRevisiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revisi');
+        Schema::dropIfExists('pokja');
     }
 }

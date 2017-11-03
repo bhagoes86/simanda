@@ -24,12 +24,17 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('nip')->unique();
+            $table->string('nama');
+            $table->string('pangkat')->nullable();
+            $table->string('golongan')->nullable();
+            $table->string('jabatan')->nullable();
             $table->string('password');
-            $table->integer('level');
+            $table->integer('level')->default(1);
+            $table->integer('flag_active')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

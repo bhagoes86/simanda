@@ -14,7 +14,7 @@ class CreateDokumenTable extends Migration
     public function up()
     {
         /**
-         * flag dokumen
+         * flag document
          * --> [0] Baru diupload, menunggu verifikasi.
          * --> [1] Status verifikasi OKE.
          * --> [2] Dokumen direvisi.
@@ -27,7 +27,8 @@ class CreateDokumenTable extends Migration
             $table->integer('id_paket');
             $table->integer('id_jenis_dokumen');
             $table->string('file_path');
-            $table->integer('flag')->default(0);
+            $table->text('keterangan')->nullable();
+            $table->integer('flag_document')->default(0);
             $table->date('tanggal_verifikasi');
             $table->timestamps();
             $table->softdeletes();

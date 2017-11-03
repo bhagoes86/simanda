@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRevisiTable extends Migration
+class CreateDinasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateRevisiTable extends Migration
      */
     public function up()
     {
-        Schema::create('revisi', function (Blueprint $table) {
+        Schema::create('dinas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_dokumen');
-            $table->text('keterangan')->nullable();
+            $table->string('nama_dinas');
+            $table->string('singkatan')->nullable();
+            $table->string('kepala_dinas')->nullable();
+            $table->text('alamat')->nullable();
+            $table->integer('flag_active')->default(1);
             $table->timestamps();
             $table->softdeletes();
         });
@@ -29,6 +32,6 @@ class CreateRevisiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revisi');
+        Schema::dropIfExists('dinas');
     }
 }

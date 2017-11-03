@@ -15,8 +15,7 @@ class CreateJenisDokumenTable extends Migration
     {
         Schema::create('jenis_dokumen', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_dokumen')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->string('nama_jenis')->nullable();
             $table->timestamps();
             $table->softdeletes();
         });
