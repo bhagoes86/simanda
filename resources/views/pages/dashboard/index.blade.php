@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    <title>Dashboard - Simanda 2017</title>
+@endsection
+
 @section('content')
     <!-- START PAGE HEADING -->
     <div class="app-heading app-heading-bordered app-heading-page">
@@ -118,5 +122,5 @@
 @endsection
 
 @section('pagescripts')    
-  {{--  none  --}}
+  {{--  NONE  --}}
 @endsection
