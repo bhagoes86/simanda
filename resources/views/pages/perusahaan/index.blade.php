@@ -31,7 +31,7 @@
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="#" class="btn btn-primary btn-shadowed">
+                    <a href="{{ route('perusahaan.create') }}" class="btn btn-primary btn-shadowed">
                         <span class="fa fa-plus"></span>&nbsp;&nbsp;
                         Tambah Data Perusahaan
                     </a>
@@ -71,6 +71,56 @@
         </div>
     </div>
     <!-- END PAGE CONTAINER -->
+
+    {{--  <div class="modal fade" id="modal-primary" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
+        <div class="modal-dialog modal-primary" role="document">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
+
+            <div class="modal-content">
+                <div class="modal-header">                        
+                    <h4 class="modal-title" id="modal-primary-header">
+                        Tambah Data perusahaan
+                    </h4>
+                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Perusahaan</label>
+                            <input name="nama" class="form-control" type="text" placeholder="Nama Perusahaan">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor SIUP</label>
+                            <input name="nomor_siup" class="form-control" type="text" placeholder="Nomor SIUP">
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis SIUP</label>
+                            <select name="jenis_siup" class="form-control">
+                                <option value="Kecil">Kecil</option>
+                                <option value="Non Kecil">Non Kecil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat Perusahaan</label>
+                            <textarea name="alamat" cols="30" rows="3" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Telepon Perusahaan</label>
+                            <input name="nomor_siup" class="form-control" type="text" placeholder="Nomor SIUP">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Perusahaan</label>
+                            <input name="nomor_siup" class="form-control" type="text" placeholder="Nomor SIUP">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>            
+    </div>  --}}
+
 @endsection
 
 @section('pagescripts')    
