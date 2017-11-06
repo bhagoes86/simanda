@@ -23,3 +23,6 @@ Route::get('/dashboard', 'DashboardController')->name('dashboard');
 
 Route::get('/perusahaan', 'PerusahaanController@index')->name('perusahaan.index');
 Route::get('/perusahaan/create', 'PerusahaanController@create')->name('perusahaan.create');
+
+Route::get('/tenaga-ahli', 'TenagaAhliController@index')->name('ta.index');
+Route::get('/tenaga-ahli/create', 'TenagaAhliController@create')->name('ta.create');

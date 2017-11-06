@@ -10,7 +10,7 @@
     <nav>
         <ul>
             <li class="title">MAIN</li>
-            <li><a href="#"><span class="nav-icon-circle">DS</span> Dashboard</a></li>
+            <li><a href="{{ route('dashboard') }}"><span class="nav-icon-circle">DS</span> Dashboard</a></li>
         
             <li>
                 <a href="#"><span class="nav-icon-circle">MD</span> Master Data</a>
@@ -18,7 +18,7 @@
                     <li><a href="#"><span class="nav-icon-circle">US</span> User</a></li>
                     <li><a href="#"><span class="nav-icon-circle">DN</span> Dinas</a></li>
                     <li><a href="{{ route('perusahaan.index') }}"><span class="nav-icon-circle">PR</span> Perusahaan</a></li>
-                    <li><a href="#"><span class="nav-icon-circle">TA</span> Tenaga Ahli</a></li>
+                    <li><a href="{{ route('ta.index') }}"><span class="nav-icon-circle">TA</span> Tenaga Ahli</a></li>
                 </ul>            
             </li>
                             
