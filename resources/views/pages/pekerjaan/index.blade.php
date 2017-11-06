@@ -1,21 +1,21 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Master Data Tenaga Ahli - Simanda 2017</title>
+    <title>Master Data Kategori Pekerjaan - Simanda 2017</title>
 @endsection
 
 @section('content')
     <!-- START PAGE HEADING -->
     <div class="app-heading app-heading-bordered app-heading-page">
         <div class="title">
-            <h1>Master Data Tenaga Ahli</h1>
-            <p>Berikut Adalah Halaman untuk manajemen Data Tenaga Ahli.</p>
+            <h1>Master Data Kategori Pekerjaan</h1>
+            <p>Berikut Adalah Halaman untuk manajemen Data Kategori Pekerjaan.</p>
         </div>               
     </div>
     <div class="app-heading-container app-heading-bordered bottom">
         <ul class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
-            <li class="active">Master Data Tenaga Ahli</li>
+            <li class="active">Master Data Kategori Pekerjaan</li>
         </ul>
     </div>
     <!-- END PAGE HEADING -->
@@ -26,13 +26,13 @@
             <!-- START HEADING -->
             <div class="app-heading app-heading-small">
                 <div class="title">
-                    <h2>Daftar Tenaga Ahli</h2>
+                    <h2>Daftar Data Kategori Pekerjaan</h2>
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="{{ URL::to('/tenagaahli-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
+                    <a href="{{ URL::to('/pekerjaan-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
                         <span class="fa fa-plus"></span>&nbsp;&nbsp;
-                        Tambah Data Tenaga Ahli
+                        Tambah Data Kategori Pekerjaan
                     </a>
                 </div>                
             </div>
@@ -43,6 +43,12 @@
             </div>
         </div>
     </div>
+    <style>
+    table td
+    {
+        padding:5px !important;
+    }
+    </style>
     <!-- END PAGE CONTAINER -->
 @endsection
 
@@ -73,8 +79,8 @@
         });
         function loaddata()
         {
-            $('#data').load(APP_URL+'/tenagaahli-data',function(){
-                $('#table-tenagaahli').dataTable();
+            $('#data').load(APP_URL+'/pekerjaan-data',function(){
+                $('#table-pekerjaan').dataTable();
                 if($(".switch").length > 0){
                     $(".switch").each(function(){
                         $(this).append("<span></span>");
@@ -98,9 +104,9 @@
 
             $.ajax({
 				dataType: 'json',
-				url: APP_URL+'/tenagaahli-status/'+id+'/'+st,    
+				url: APP_URL+'/pekerjaan-status/'+id+'/'+st,    
 			}).done(function(data){
-				var txt = "Status Data Tenaga Ahli Berhasil Di Edit";
+				var txt = "Status Data Kategori Pekerjaan Berhasil Di Edit";
                 noty({
                     text: "<strong>Informasi</strong>"+txt,
                     type: 'information',
@@ -115,7 +121,7 @@
                 });
 					
 			}).fail(function(){
-				var txt = "Status Data Tenaga Ahli Gagal Di Edit";
+				var txt = "Status Data Kategori Pekerjaan Gagal Di Edit";
                 noty({
                     text: "<strong>Informasi</strong>"+txt,
                     type: 'error',
@@ -133,23 +139,23 @@
 
         function edit(id)
         {
-            location.href=APP_URL+'/tenagaahli-form/'+id;
+            location.href=APP_URL+'/pekerjaan-form/'+id;
         }
 
         function hapus(id)
         {
             $('#modal-primary-header').text('Peringatan');
-            $('#modal-primary-body').html('<h2>Yakin ingin Menghapus Data Tenaga Ahli Ini??</h2>');
+            $('#modal-primary-body').html('<h2>Yakin ingin Menghapus Data Kategori Pekerjaan Ini??</h2>');
             $('div#modal-primary').modal('show');
             $('#ok').click(function(){
                 $.ajax({
-                    url: APP_URL+'/tenagaahli/'+id,
+                    url: APP_URL+'/pekerjaan/'+id,
                     type : 'DELETE',
                     dataType: 'json',
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                     data: {"_token": "{{ csrf_token() }}"}
                 }).done(function(data){
-                    var txt = "Data Tenaga Ahli Berhasil Di Hapus";
+                    var txt = "Data Kategori Pekerjaan Berhasil Di Hapus";
                     noty({
                         text: "<strong>Informasi</strong>"+txt,
                         type: 'information',
@@ -166,7 +172,7 @@
                     loaddata();
 
                 }).fail(function(){
-                    var txt = " Data Tenaga Ahli Gagal Di Hapus";
+                    var txt = " Data Kategori Pekerjaan Gagal Di Hapus";
                     noty({
                         text: "<strong>Informasi</strong>"+txt,
                         type: 'error',

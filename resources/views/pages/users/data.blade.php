@@ -45,3 +45,9 @@
     @endforeach
     </tbody>
 </table>
+<style>
+table td
+{
+    padding:5px !important;
+}
+</style>

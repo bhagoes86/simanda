@@ -43,4 +43,14 @@ Route::resource('tenagaahli', 'TenagaahliController');
 Route::get('/tenagaahli-data', 'TenagaahliController@data')->name('tenagaahli.data');
 Route::get('/tenagaahli-form/{id}', 'TenagaahliController@form')->name('tenagaahli.form');
 Route::get('/tenagaahli-status/{id}/{st}', 'TenagaahliController@status')->name('tenagaahli.status');
+// POKJA
+Route::resource('pokja', 'PokjaController');
+Route::get('/pokja-data', 'PokjaController@data')->name('pokja.data');
+Route::get('/pokja-form/{id}', 'PokjaController@form')->name('pokja.form');
+Route::get('/pokja-status/{id}/{st}', 'PokjaController@status')->name('pokja.status');
+// Jenis Pekerjaan
+Route::resource('pekerjaan', 'PekerjaanController');
+Route::get('/pekerjaan-data', 'PekerjaanController@data')->name('pekerjaan.data');
+Route::get('/pekerjaan-form/{id}', 'PekerjaanController@form')->name('pekerjaan.form');
+Route::get('/pekerjaan-status/{id}/{st}', 'PekerjaanController@status')->name('pekerjaan.status');
 

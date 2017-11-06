@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="{{ URL::to('/dinas-form/-1') }}" class="btn btn-primary btn-shadowed">
+                    <a href="{{ URL::to('/dinas-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
                         <span class="fa fa-plus"></span>&nbsp;&nbsp;
                         Tambah Data Dinas
                     </a>
@@ -43,6 +43,12 @@
             </div>
         </div>
     </div>
+    <style>
+    table td
+    {
+        padding:5px !important;
+    }
+    </style>
     <!-- END PAGE CONTAINER -->
 @endsection
 

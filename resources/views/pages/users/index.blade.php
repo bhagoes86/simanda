@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="{{ URL::to('/user-form/-1') }}" class="btn btn-primary btn-shadowed">
+                    <a href="{{ URL::to('/user-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
                         <span class="fa fa-plus"></span>&nbsp;&nbsp;
                         Tambah Data User
                     </a>
