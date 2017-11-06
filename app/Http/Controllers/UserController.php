@@ -12,13 +12,16 @@ class UserController extends Controller
 
     public function data()
     {
+        $level = config('services.id_level');
         $user=Users::orderBy('nama')->get();
         return view('pages.users.data')
-            ->with('dinas',$user);
+            ->with('level',$level)
+            ->with('user',$user);
     }
     public function form($id=-1)
     {
         $user=Users::all();
+         $level = config('services.id_level');
         $det=array();
         if($id!=-1)
         {
@@ -27,12 +30,15 @@ class UserController extends Controller
         return view('pages.users.form')
             ->with('id',$id)
             ->with('det',$det)
+            ->with('level',$level)
             ->with('user',$user);
     }
 
     public function store(Request $request)
     {
-        $create = Users::create($request->all());
+        $data=$request->all();
+        $data['password']=bcrypt($request->input('nip'));
+        $create = Users::create($data);
         // return response()->json($create);
         return redirect('user')->with('pesan', 'Data User Berhasil Di Simpan');
     }
