@@ -48,3 +48,12 @@
         <!-- END APP SCRIPTS -->
     </body>
 </html>
+@include('includes.modal')
+<script type="text/javascript">
+  var APP_URL = {!! json_encode(url('/')) !!}
+  $.ajaxSetup({
+			headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+	});
+</script>
