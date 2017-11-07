@@ -34,5 +34,13 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    /**
+         * flag level user
+         * --> [1] Super Admin
+         * --> [2] Kepala ULP
+         * --> [3] PPK
+         * --> [4] POKJA
+         * --> [5] Sekretariat
+         */
+    'id_level'=>[1=>'Super Admin',2=>'Kepala ULP',3=>'PPK',4=>'POKJA',5=>'Sekretariat']
 ];

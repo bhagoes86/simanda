@@ -3,58 +3,57 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Users;
-class UserController extends Controller
+use App\Model\Tenagaahli;
+class TenagaahliController extends Controller
 {
     public function index() {
-        return view('pages.users.index');
+        return view('pages.tenagaahli.index');
     }
 
     public function data()
     {
         $level = config('services.id_level');
-        $user=Users::orderBy('nama')->get();
-        return view('pages.users.data')
+        $tenagaahli=Tenagaahli::orderBy('nama')->get();
+        return view('pages.tenagaahli.data')
             ->with('level',$level)
-            ->with('user',$user);
+            ->with('tenagaahli',$tenagaahli);
     }
     public function form($id=-1)
     {
-        $user=Users::all();
+        $tenagaahli=Tenagaahli::all();
          $level = config('services.id_level');
         $det=array();
         if($id!=-1)
         {
-            $det=Users::find($id);
+            $det=Tenagaahli::find($id);
         }
-        return view('pages.users.form')
+        return view('pages.tenagaahli.form')
             ->with('id',$id)
             ->with('det',$det)
             ->with('level',$level)
-            ->with('user',$user);
+            ->with('tenagaahli',$tenagaahli);
     }
 
     public function store(Request $request)
     {
         $data=$request->all();
-        $data['password']=bcrypt($request->input('nip'));
-        $create = Users::create($data);
+        $create = Tenagaahli::create($data);
         // return response()->json($create);
-        return redirect('user')->with('pesan', 'Data User Berhasil Di Simpan');
+        return redirect('tenagaahli')->with('pesan', 'Data Tenaga Ahli Berhasil Di Simpan');
     }
     public function update(Request $request,$id)
     {
-        $edit = Users::find($id)->update($request->all());
+        $edit = Tenagaahli::find($id)->update($request->all());
         // return response()->json($create);
-        return redirect('user')->with('pesan', 'Data User Berhasil Di Edit');
+        return redirect('tenagaahli')->with('pesan', 'Data Tenaga Ahli Berhasil Di Edit');
     }
     public function destroy($id) {
-        Users::find($id)->delete();
+        Tenagaahli::find($id)->delete();
         return response()->json(['done']);
     }
     public function status($id,$st) {
         $data['flag_active']=$st;
-        $edit = Users::find($id)->update($data);
+        $edit = Tenagaahli::find($id)->update($data);
         return response()->json(['done']);
     }
 }

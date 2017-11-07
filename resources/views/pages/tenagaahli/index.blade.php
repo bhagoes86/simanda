@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Master Tenaga Ahli - Simanda 2017</title>
+    <title>Master Data Tenaga Ahli - Simanda 2017</title>
 @endsection
 
 @section('content')
     <!-- START PAGE HEADING -->
     <div class="app-heading app-heading-bordered app-heading-page">
         <div class="title">
-            <h1>Master Tenaga Ahli</h1>
-            <p>Berikut adalah halaman untuk manajemen data tenaga ahli.</p>
+            <h1>Master Data Tenaga Ahli</h1>
+            <p>Berikut Adalah Halaman untuk manajemen Data Tenaga Ahli.</p>
         </div>               
     </div>
     <div class="app-heading-container app-heading-bordered bottom">
@@ -31,7 +31,7 @@
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="{{ route('ta.create') }}" class="btn btn-primary btn-shadowed">
+                    <a href="{{ URL::to('/tenagaahli-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
                         <span class="fa fa-plus"></span>&nbsp;&nbsp;
                         Tambah Data Tenaga Ahli
                     </a>
@@ -40,29 +40,7 @@
             <!-- END HEADING -->
             
             <div class="block-content">
-                
-                <table class="table table-striped table-bordered datatable-extended">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Telepon</th>
-                            <th>Email</th>
-                            <th>Pendidikan</th>
-                            <th>Sertifikasi</th>
-                        </tr>
-                    </thead>                                    
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>                         
-                    </tbody>
-                </table>
+                <div id="data"></div>
             </div>
         </div>
     </div>
@@ -72,4 +50,140 @@
 @section('pagescripts')    
     <script type="text/javascript" src="{{ asset('theme/js/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/js/vendor/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            loaddata();
+            
+            var pesan='{{(session('pesan') ? session('pesan') : '' )}}';
+            //var pesan='hi';
+            if(pesan!='')
+            {
+                noty({
+                    text: "<strong>Informasi</strong>"+pesan,
+                    type: 'information',
+                    layout: 'topRight',
+                    animation: {
+                        open: 'animated bounceIn',
+                        close: 'animated fadeOut',                    
+                        speed: 400
+                    },
+                    progressBar:true,
+                    timeout:3000
+                });
+            }
+        });
+        function loaddata()
+        {
+            $('#data').load(APP_URL+'/tenagaahli-data',function(){
+                $('#table-tenagaahli').dataTable();
+                if($(".switch").length > 0){
+                    $(".switch").each(function(){
+                        $(this).append("<span></span>");
+                    });
+                }
+                
+            });
+        }
+        
+        function status(id)
+        {
+            var val=$('.switch_'+id).val();
+            if(val == '0')
+            {
+                var st=1;
+            }
+            else
+            {
+                var st=0;
+            }
+            $('.switch_'+id).val(st);
+
+            $.ajax({
+				dataType: 'json',
+				url: APP_URL+'/tenagaahli-status/'+id+'/'+st,    
+			}).done(function(data){
+				var txt = "Status Data Tenaga Ahli Berhasil Di Edit";
+                noty({
+                    text: "<strong>Informasi</strong>"+txt,
+                    type: 'information',
+                    layout: 'topRight',
+                    animation: {
+                        open: 'animated bounceIn',
+                        close: 'animated fadeOut',                    
+                        speed: 400
+                    },
+                    progressBar:true,
+                    timeout:3000
+                });
+					
+			}).fail(function(){
+				var txt = "Status Data Tenaga Ahli Gagal Di Edit";
+                noty({
+                    text: "<strong>Informasi</strong>"+txt,
+                    type: 'error',
+                    layout: 'topRight',
+                    animation: {
+                        open: 'animated bounceIn',
+                        close: 'animated fadeOut',                    
+                        speed: 400
+                    },
+                    progressBar:true,
+                    timeout:3000
+                });
+			});
+        }
+
+        function edit(id)
+        {
+            location.href=APP_URL+'/tenagaahli-form/'+id;
+        }
+
+        function hapus(id)
+        {
+            $('#modal-primary-header').text('Peringatan');
+            $('#modal-primary-body').html('<h2>Yakin ingin Menghapus Data Tenaga Ahli Ini??</h2>');
+            $('div#modal-primary').modal('show');
+            $('#ok').click(function(){
+                $.ajax({
+                    url: APP_URL+'/tenagaahli/'+id,
+                    type : 'DELETE',
+                    dataType: 'json',
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    data: {"_token": "{{ csrf_token() }}"}
+                }).done(function(data){
+                    var txt = "Data Tenaga Ahli Berhasil Di Hapus";
+                    noty({
+                        text: "<strong>Informasi</strong>"+txt,
+                        type: 'information',
+                        layout: 'topRight',
+                        animation: {
+                            open: 'animated bounceIn',
+                            close: 'animated fadeOut',                    
+                            speed: 400
+                        },
+                        progressBar:true,
+                        timeout:3000
+                    });
+                    $('div#modal-primary').modal('hide');
+                    loaddata();
+
+                }).fail(function(){
+                    var txt = " Data Tenaga Ahli Gagal Di Hapus";
+                    noty({
+                        text: "<strong>Informasi</strong>"+txt,
+                        type: 'error',
+                        layout: 'topRight',
+                        animation: {
+                            open: 'animated bounceIn',
+                            close: 'animated fadeOut',                    
+                            speed: 400
+                        },
+                        progressBar:true,
+                        timeout:3000
+                    });
+                    $('div#modal-primary').modal('hide');
+                });
+            });
+        }
+    </script>
 @endsection

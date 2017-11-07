@@ -1,21 +1,21 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Master Data Dinas - Simanda 2017</title>
+    <title>Master Data User - Simanda 2017</title>
 @endsection
 
 @section('content')
     <!-- START PAGE HEADING -->
     <div class="app-heading app-heading-bordered app-heading-page">
         <div class="title">
-            <h1>Master Data Dinas</h1>
-            <p>Berikut Adalah Halaman untuk manajemen Data Dinas.</p>
+            <h1>Master Data User</h1>
+            <p>Berikut Adalah Halaman untuk manajemen Data User.</p>
         </div>               
     </div>
     <div class="app-heading-container app-heading-bordered bottom">
         <ul class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
-            <li class="active">Master Data Dinas</li>
+            <li class="active">Master Data User</li>
         </ul>
     </div>
     <!-- END PAGE HEADING -->
@@ -26,13 +26,13 @@
             <!-- START HEADING -->
             <div class="app-heading app-heading-small">
                 <div class="title">
-                    <h2>Daftar Dinas</h2>
+                    <h2>Daftar User</h2>
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="{{ URL::to('/dinas-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
+                    <a href="{{ URL::to('/user-form/-1') }}" class="btn btn-primary btn-shadowed btn-xs">
                         <span class="fa fa-plus"></span>&nbsp;&nbsp;
-                        Tambah Data Dinas
+                        Tambah Data User
                     </a>
                 </div>                
             </div>
@@ -43,12 +43,6 @@
             </div>
         </div>
     </div>
-    <style>
-    table td
-    {
-        padding:5px !important;
-    }
-    </style>
     <!-- END PAGE CONTAINER -->
 @endsection
 
@@ -79,7 +73,7 @@
         });
         function loaddata()
         {
-            $('#data').load(APP_URL+'/dinas-data',function(){
+            $('#data').load(APP_URL+'/user-data',function(){
                 $('#table-dinas').dataTable();
                 if($(".switch").length > 0){
                     $(".switch").each(function(){
@@ -104,9 +98,9 @@
 
             $.ajax({
 				dataType: 'json',
-				url: APP_URL+'/dinas-status/'+id+'/'+st,    
+				url: APP_URL+'/user-status/'+id+'/'+st,    
 			}).done(function(data){
-				var txt = "Status Data Dinas Berhasil Di Edit";
+				var txt = "Status Data User Berhasil Di Edit";
                 noty({
                     text: "<strong>Informasi</strong>"+txt,
                     type: 'information',
@@ -121,7 +115,7 @@
                 });
 					
 			}).fail(function(){
-				var txt = "Status Data Dinas Gagal Di Edit";
+				var txt = "Status Data User Gagal Di Edit";
                 noty({
                     text: "<strong>Informasi</strong>"+txt,
                     type: 'error',
@@ -139,23 +133,23 @@
 
         function edit(id)
         {
-            location.href=APP_URL+'/dinas-form/'+id;
+            location.href=APP_URL+'/user-form/'+id;
         }
 
         function hapus(id)
         {
             $('#modal-primary-header').text('Peringatan');
-            $('#modal-primary-body').html('<h2>Yakin ingin Menghapus Data Dinas Ini??</h2>');
+            $('#modal-primary-body').html('<h2>Yakin ingin Menghapus Data User Ini??</h2>');
             $('div#modal-primary').modal('show');
             $('#ok').click(function(){
                 $.ajax({
-                    url: APP_URL+'/dinas/'+id,
+                    url: APP_URL+'/user/'+id,
                     type : 'DELETE',
                     dataType: 'json',
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                     data: {"_token": "{{ csrf_token() }}"}
                 }).done(function(data){
-                    var txt = "Data Dinas Berhasil Di Hapus";
+                    var txt = "Data User Berhasil Di Hapus";
                     noty({
                         text: "<strong>Informasi</strong>"+txt,
                         type: 'information',
@@ -172,7 +166,7 @@
                     loaddata();
 
                 }).fail(function(){
-                    var txt = " Data Dinas Gagal Di Hapus";
+                    var txt = " Data User Gagal Di Hapus";
                     noty({
                         text: "<strong>Informasi</strong>"+txt,
                         type: 'error',

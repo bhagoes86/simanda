@@ -1,21 +1,21 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Form Data Dinas - Simanda 2017</title>
+    <title>Form Data Tenaga Ahli - Simanda 2017</title>
 @endsection
 
 @section('content')
     <!-- START PAGE HEADING -->
     <div class="app-heading app-heading-bordered app-heading-page">
         <div class="title">
-            <h1>Form Data Dinas</h1>
-            <p>Berikut Adalah Halaman untuk manajemen Data Dinas.</p>
+            <h1>Form Data Tenaga Ahli</h1>
+            <p>Berikut Adalah Halaman untuk manajemen Data Tenaga Ahli.</p>
         </div>               
     </div>
     <div class="app-heading-container app-heading-bordered bottom">
         <ul class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
-            <li class="active">Form Data Dinas</li>
+            <li class="active">Form Data Tenaga Ahli</li>
         </ul>
     </div>
     <!-- END PAGE HEADING -->
@@ -26,58 +26,61 @@
             <!-- START HEADING -->
             <div class="app-heading app-heading-small">
                 <div class="title">
-                    <h2>Form Dinas</h2>
+                    <h2>Form User</h2>
                 </div>
                 
                 <div class="heading-elements">
-                    <a href="{{ URL::to('/dinas') }}" class="btn btn-primary btn-shadowed">
+                    <a href="{{ URL::to('/tenagaahli') }}" class="btn btn-primary btn-shadowed">
                         <span class="fa fa-angle-double-left"></span>&nbsp;&nbsp;
-                        Kembali Ke Data Dinas
+                        Kembali Ke Data Tenaga Ahli
                     </a>
                 </div>                
             </div>
             <!-- END HEADING -->
             
             <div class="block-content">
-                    <form class="form-horizontal" id="form-dinas" method="POST" action="{{$id==-1 ? URL::to('dinas') : URL::to('dinas/'.$id) }}">
+                    <form class="form-horizontal" id="form-tenagaahli" method="POST" action="{{$id==-1 ? URL::to('tenagaahli') : URL::to('tenagaahli/'.$id) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 									@if ($id!=-1)
 										{{ method_field('PATCH') }}
 									@endif
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Nama Dinas</label>
+                                    <label class="col-md-2 control-label">Nama</label>
                                     <div class="col-md-10">
-                                        <input type="text" name="nama_dinas" class="form-control" placeholder="Nama Dinas" data-validation="required" value="{{$id!=-1 ? $det->nama_dinas : ''}}">
+                                        <input type="text" name="nama" class="form-control" placeholder="Nama" data-validation="required" value="{{$id!=-1 ? $det->nama : ''}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Singkatan</label>
+                                    <label class="col-md-2 control-label">Telepon</label>
                                     <div class="col-md-10">
-                                        <input type="text" name="singkatan" class="form-control" placeholder="Singkatan" data-validation="required"  value="{{$id!=-1 ? $det->singkatan : ''}}">
+                                        <input type="text" name="telp" class="form-control" placeholder="Telepon" data-validation="required"  value="{{$id!=-1 ? $det->telp : ''}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Nama Kepala Dinas</label>
+                                    <label class="col-md-2 control-label">Email</label>
                                     <div class="col-md-10">
-                                        <input type="text" name="kepala_dinas" class="form-control" placeholder="Nama Kepala Dinas" data-validation="required"  value="{{$id!=-1 ? $det->kepala_dinas : ''}}">
+                                        <input type="text" name="email" class="form-control" placeholder="Email" data-validation="required,email"  value="{{$id!=-1 ? $det->email : ''}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Status</label>
-                                    <div class="col-md-3">
-                                        <select class="form-control" name="flag_active" data-placeholder="Status Dinas" data-validation="required">
-                                            <option value=""></option>
-                                            <option value="1"  {{$id!=-1 ? ($det->flag_active=='1' ? 'selected="selected"' : '') : ''}}>Aktif</option>
-                                            <option value="0" {{$id!=-1 ? ($det->flag_active=='0' ? 'selected="selected"' : '') : ''}}>Tidak Aktif</option>
-                                        </select>
+                                    <label class="col-md-2 control-label">Pendidikan</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="pendidikan" class="form-control" placeholder="Pendidikan" data-validation="required"  value="{{$id!=-1 ? $det->pendidikan : ''}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-md-2 control-label">Sertifikasi</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="sertifikasi" class="form-control" placeholder="Sertifikasi" data-validation="required"  value="{{$id!=-1 ? $det->sertifikasi : ''}}">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
                                     <label class="col-md-2 control-label">Alamat</label>
                                     <div class="col-md-10">
                                         <textarea class="form-control" rows="5" name="alamat">{{$id!=-1 ? $det->alamat : ''}}</textarea>
                                     </div>
-                                </div>
+                                </div> 
+                              
                                 <div class="text-right">
   									<button type="submit" class="btn btn-primary">Simpan <i class="icon-arrow-right14 position-right"></i></button>
   								</div>
