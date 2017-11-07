@@ -78,7 +78,7 @@
                                     <label class="col-md-2 control-label">Level</label>
                                     <div class="col-md-3">
                                         <select class="form-control" name="level" data-placeholder="Level" data-validation="required">
-                                            <option value=""></option>
+                                            <option value="">-ID Level-</option>
                                             @foreach($level as $k => $v)
                                                 @if($id!=-1)
                                                     @if($det->level==$k)
@@ -97,7 +97,7 @@
                                     <label class="col-md-2 control-label">Status</label>
                                     <div class="col-md-3">
                                         <select class="form-control" name="flag_active" data-placeholder="Status User" data-validation="required">
-                                            <option value=""></option>
+                                            <option value="">-Status User-</option>
                                             <option value="1"  {{$id!=-1 ? ($det->flag_active=='1' ? 'selected="selected"' : '') : ''}}>Aktif</option>
                                             <option value="0" {{$id!=-1 ? ($det->flag_active=='0' ? 'selected="selected"' : '') : ''}}>Tidak Aktif</option>
                                         </select>

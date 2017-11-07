@@ -52,8 +52,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">Anggota Pokja</label>
-                                    <div class="col-md-10">
-                                        
+                                    <div class="col-md-6">
+                                        <select class="s2-select form-control" multiple name="user[]" data-placeholder="-Pilih Nama User-">
+                                            @foreach($user as $k => $v)
+                                                @if(count($upk)!=0)
+                                                    <option value="{{$upk[$v->id]}}" selected="selected">{{$v->nama}}</option>
+                                                @else
+                                                    @if(!isset($upkj[$v->id]))
+                                                        <option value="{{$v->id}}">{{$v->nama}}</option>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 
