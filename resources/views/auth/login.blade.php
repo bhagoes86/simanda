@@ -1,69 +1,78 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+    <head>                        
+        <title>Boooya - Login With Background</title>            
+        
+        <!-- META SECTION -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <!-- END META SECTION -->
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" href="{{ asset('theme/css/styles.css') }}">
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>        
+        
+        <!-- APP WRAPPER -->
+        <div class="app app-fh">
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+            <!-- START APP CONTAINER -->
+            <div class="app-container" style="background: url(assets/images/background/bg-1.jpg) center center no-repeat fixed;">
+                
+                <div class="app-login-box">                                        
+                    <div class="app-login-box-user"><img src="{{ asset('theme/img/user/no-image.png') }}"></div>
+                    <div class="app-login-box-title">
+                        <div class="title">Simanda 2017</div>
+                        <div class="subtitle">Silahkan lakukan login</div>                        
+                    </div>
+                    <div class="app-login-box-container">
+                        <form action="{{ route('login') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nip" placeholder="Email Address">
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <button class="btn btn-success btn-block">Login</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <div class="app-login-box-footer">
+                        &copy; Simanda 2017. All rights reserved.
+                        {{ $errors }}
+                    </div>
                 </div>
+                                
             </div>
-        </div>
-    </div>
-</div>
-@endsection
+            <!-- END APP CONTAINER -->
+           
+        </div>        
+        <!-- END APP WRAPPER -->                
+
+        <!-- IMPORTANT SCRIPTS -->
+        <script type="text/javascript" src="js/vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery/jquery-migrate.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/vendor/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/vendor/moment/moment.min.js"></script>
+        <script type="text/javascript" src="js/vendor/customscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <!-- END IMPORTANT SCRIPTS -->
+       
+        <!-- APP SCRIPTS -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/app_plugins.js"></script>
+        <script type="text/javascript" src="js/app_demo.js"></script>
+        <!-- END APP SCRIPTS -->
+    </body>
+</html>
