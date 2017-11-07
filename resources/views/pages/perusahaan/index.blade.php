@@ -14,8 +14,8 @@
     </div>
     <div class="app-heading-container app-heading-bordered bottom">
         <ul class="breadcrumb">
-            <li><a href="#">Dashboard</a></li>
-            <li class="active">Master Data Perusahaan</li>
+            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="active">Master Perusahaan</li>
         </ul>
     </div>
     <!-- END PAGE HEADING -->

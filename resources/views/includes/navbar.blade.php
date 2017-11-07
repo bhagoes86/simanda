@@ -19,11 +19,15 @@
                     <div class="dropdown">
                         <button type="button" class="btn btn-default btn-icon" data-toggle="dropdown"><span class="icon-cog"></span></button>                        
                         <ul class="dropdown-menu dropdown-left">
-                            <li><a href="#"><span class="icon-cog"></span> Settings</a></li> 
-                            <li><a href="#"><span class="icon-envelope"></span> Messages <span class="label label-danger pull-right">+24</span></a></li>
-                            <li><a href="#"><span class="icon-users"></span> Contacts <span class="label label-default pull-right">76</span></a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><span class="icon-exit"></span> Log Out</a></li> 
+                            <li>
+                                <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <span class="icon-exit"></span> Log Out
+                                </a>
+
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li> 
                         </ul>
                     </div>                    
                 </div>

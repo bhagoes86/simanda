@@ -10,6 +10,10 @@ class PerusahaanController extends Controller
         return view('pages.perusahaan.index');
     }
 
+    public function create() {
+        return view('pages.perusahaan.create');
+    }
+
     public function data()
     {
         $perusahaan=Perusahaan::orderBy('nama_perusahaan')->get();

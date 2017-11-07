@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Users;
+
+use Auth;
+
 class UserController extends Controller
 {
     public function index() {
@@ -18,6 +21,7 @@ class UserController extends Controller
             ->with('level',$level)
             ->with('user',$user);
     }
+
     public function form($id=-1)
     {
         $user=Users::all();
@@ -42,19 +46,27 @@ class UserController extends Controller
         // return response()->json($create);
         return redirect('user')->with('pesan', 'Data User Berhasil Di Simpan');
     }
+
     public function update(Request $request,$id)
     {
         $edit = Users::find($id)->update($request->all());
         // return response()->json($create);
         return redirect('user')->with('pesan', 'Data User Berhasil Di Edit');
     }
+
     public function destroy($id) {
         Users::find($id)->delete();
         return response()->json(['done']);
     }
+
     public function status($id,$st) {
         $data['flag_active']=$st;
         $edit = Users::find($id)->update($data);
         return response()->json(['done']);
+    }
+
+    public function performLogout(Request $request) {
+        Auth::logout();
+        return redirect('login');
     }
 }

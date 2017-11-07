@@ -14,8 +14,8 @@
     </div>
     <div class="app-heading-container app-heading-bordered bottom">
         <ul class="breadcrumb">
-            <li><a href="#">Dashboard</a></li>
-            <li class="active">Master Data Tenaga Ahli</li>
+            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="active">Master Tenaga Ahli</li>
         </ul>
     </div>
     <!-- END PAGE HEADING -->
@@ -27,6 +27,7 @@
             <div class="app-heading app-heading-small">
                 <div class="title">
                     <h2>Daftar Tenaga Ahli</h2>
+                    <p>Berikut adalah seluruh data tenaga ahli dalam database.</p>
                 </div>
                 
                 <div class="heading-elements">
@@ -83,6 +84,7 @@
                 
             });
         }
+        
         function status(id)
         {
             var val=$('.switch_'+id).val();
