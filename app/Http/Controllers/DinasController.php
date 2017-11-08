@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Dinas;
+
 class DinasController extends Controller
 {
+
     public function index() {
         return view('pages.dinas.index');
     }

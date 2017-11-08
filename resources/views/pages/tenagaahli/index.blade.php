@@ -40,6 +40,14 @@
             <!-- END HEADING -->
             
             <div class="block-content">
+
+                    <div class="row" id="loader">
+                        <div class="col-lg-12">
+                            <center>
+                                <div class="app-spinner loading loading-primary" style="float:none !important;"></div>
+                            </center>
+                        </div>
+                    </div>
                 <div id="data"></div>
             </div>
         </div>
@@ -74,7 +82,9 @@
         });
         function loaddata()
         {
+            $('#loader').show();
             $('#data').load(APP_URL+'/tenagaahli-data',function(){
+                $('#loader').hide();
                 $('#table-tenagaahli').dataTable();
                 if($(".switch").length > 0){
                     $(".switch").each(function(){
