@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Pekerjaan;
 class PekerjaanController extends Controller
 {
+    
     public function index() {
         return view('pages.pekerjaan.index');
     }
