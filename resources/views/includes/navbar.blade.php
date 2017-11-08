@@ -10,10 +10,10 @@
     <ul class="app-header-buttons pull-right">
         <li>
             <div class="contact contact-rounded contact-bordered contact-lg contact-ps-controls">
-                <img src="{{ asset('/theme/assets/images/users/user_1.jpg') }}" alt="John Doe">
+                <img src="{{ asset('/theme/img/user/no-image.png') }}" alt="John Doe">
                 <div class="contact-container">
-                    <a href="#">John Doe</a>
-                    <span>Administrator</span>
+                    <a href="#">{{ Auth::user()->nama }}</a>
+                    <span>{{ Auth::user()->nip }}</span>
                 </div>
                 <div class="contact-controls">
                     <div class="dropdown">
