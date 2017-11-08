@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'DashboardController')->name('dashboard')->middleware('auth');;
+Route::get('/dashboard', 'DashboardController')->name('dashboard')->middleware('auth');
 
 Route::post('/logout','UserController@performLogout');
 
