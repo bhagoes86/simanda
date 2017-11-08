@@ -19,9 +19,13 @@
             {
                 $up='<div class="row">';
                 foreach($userpokja[$v->id] as $kk => $vv)
-                {                                        
+                {              
+                    if(isset($user[$kk]))
+                        $nm=$user[$kk]->nama;
+                    else
+                        $nm='';                          
                     $up.='<div class="col-lg-1 col-md-2 text-right"><i class="fa fa-remove"></i></div>';
-                    $up.='<div class="col-lg-11 col-md-10">'.$user[$kk]->nama.'</div>';
+                    $up.='<div class="col-lg-11 col-md-10">'.$nm.'</div>';
                 }
                 $up.='</div>';
             }

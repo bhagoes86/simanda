@@ -50,7 +50,6 @@
                     </div>
                     <div class="app-login-box-footer">
                         &copy; Simanda 2017. All rights reserved.
-                        {{ $errors }}
                     </div>
                 </div>
                                 
